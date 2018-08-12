@@ -1,0 +1,21 @@
+---
+
+- name: ensure that the directory structure exists
+  file:
+    path: "{{ install_directory }}"
+    state: directory
+
+- name: Clone source
+  git:
+    clone: yes
+    dest: "{{ install_directory }}/AudioStego" 
+    repo: https://github.com/danielcardeenas/AudioStego.git
+    force: yes
+
+- name: requires cmake and boost
+  apt: 
+    name: "{{ item }}" 
+  with_items:
+    - cmake
+    - libboost-all-dev
+

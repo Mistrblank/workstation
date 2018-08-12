@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+    - name: Install stuff via aptitude
+      apt: 
+        name: "{{ item }}"
+      with_items: 
+        - git
+        - open-vm-tools
+        - open-vm-tools-desktop
+    
+    - name: Build steganography tools
+      include_role:  
+        name: AudioStego
+  
