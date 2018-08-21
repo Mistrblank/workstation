@@ -14,4 +14,6 @@
     - name: Build steganography tools
       include_role:  
         name: AudioStego
-  
+    - name: Add Visual Studio Code
+      include_role:
+        name: vscode  
