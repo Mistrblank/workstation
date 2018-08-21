@@ -1,0 +1,13 @@
+---
+- name: Install prerequisites
+  pip: 
+    name: "{{ item }}" 
+    state: present
+  with_items:
+    - requests
+    - importlib
+    - PyYAML
+- name: Install ibmsecurity
+  pip:
+    name: git+https://github.com/IBM-Security/ibmsecurity.git
+    state: present
