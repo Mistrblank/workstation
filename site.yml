@@ -3,6 +3,11 @@
   connection: local
 
   tasks:
+    - name: Update and Upgrade apt packages
+      apt: 
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400  
     - name: Install stuff via aptitude
       apt: 
         name: "{{ item }}"
@@ -11,12 +16,14 @@
         - open-vm-tools
         - open-vm-tools-desktop
         - sshfs
-    - name: Build steganography tools
-      include_role:  
-        name: AudioStego
+        - nmon
+        - xfce4
     - name: Add Visual Studio Code
       include_role:
         name: vscode  
     - name: install the ibm-security-role
       include_role:
         name: ibmsecurity
+    - name: Build steganography tools
+      include_role:  
+        name: AudioStego
