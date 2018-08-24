@@ -10,10 +10,13 @@
         - git
         - open-vm-tools
         - open-vm-tools-desktop
-    
+        - sshfs
     - name: Build steganography tools
       include_role:  
         name: AudioStego
     - name: Add Visual Studio Code
       include_role:
         name: vscode  
+    - name: install the ibm-security-role
+      include_role:
+        name: ibmsecurity
