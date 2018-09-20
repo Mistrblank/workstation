@@ -1,4 +1,14 @@
 ---
+- name: Build Pip trusted hosts
+  blockinfile:
+    path: /root/.config/pip/pip.conf
+    block: |
+[global]
+trusted-host = pypi.python.org
+ 	             pypi.org
+               files.pythonhosted.org
+
+
 - name: Install prerequisites
   pip: 
     name: "{{ item }}" 
