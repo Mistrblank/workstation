@@ -18,6 +18,7 @@
         - sshfs
         - nmon
         - xfce4
+        - cherrytree
     - name: Add Visual Studio Code
       include_role:
         name: vscode  
