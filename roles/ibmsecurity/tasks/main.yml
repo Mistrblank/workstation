@@ -2,7 +2,7 @@
 - name: Build Pip trusted hosts
   copy:
     src: files/pip.conf
-    dest: ~/.config/pip.conf #This is being run local anyway
+    dest: ~/.config/pip/pip.conf #This is being run local anyway
         
 - name: Install prerequisites
   pip: 
