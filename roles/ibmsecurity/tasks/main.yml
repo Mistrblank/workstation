@@ -1,14 +1,9 @@
 ---
 - name: Build Pip trusted hosts
-  blockinfile:
-    path: /root/.config/pip/pip.conf
-    block: |
-[global]
-trusted-host = pypi.python.org
- 	             pypi.org
-               files.pythonhosted.org
-
-
+  copy:
+    src: files/pip.conf
+    dest: ~/.config/pip.conf #This is being run local anyway
+        
 - name: Install prerequisites
   pip: 
     name: "{{ item }}" 
@@ -21,3 +16,9 @@ trusted-host = pypi.python.org
   pip:
     name: git+https://github.com/IBM-Security/ibmsecurity.git
     state: present
+
+- name: Create Symbolic Link
+  file: 
+    src: /usr/bin/python2.7
+    dest: /usr/local/bin/python2.7
+    state: link
