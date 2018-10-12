@@ -2,7 +2,7 @@
 - name: Build Pip trusted hosts
   copy:
     src: files/pip.conf
-    dest: ~/.config/pip/pip.conf #This is being run local anyway
+    dest: ~/.config/pip/ #This is being run local anyway
         
 - name: Install prerequisites
   pip: 
@@ -10,7 +10,7 @@
     state: present
   with_items:
     - requests
-    - importlib
+    #- importlib #Installed with 2.7 by default
     - PyYAML
 - name: Install ibmsecurity
   pip:

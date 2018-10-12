@@ -3,11 +3,20 @@
   connection: local
 
   tasks:
-    - name: Update and Upgrade apt packages
-      apt: 
-        upgrade: yes
-        update_cache: yes
-        cache_valid_time: 86400  
+    - name: configure CNTLM
+      import_role: 
+        name: cntlm
+      vars:
+        cntlm_username: vincent.johnson
+        cntlm_domain: courts.judiciary.state.nj.us
+        cntlm_proxy: internetproxy.courts.judiciary.state.nj.us:8080
+        cntlm_passntlmv2: FD1308A5185CB1FF4BCA75173BFB2196
+#    - name: Update and Upgrade apt packages
+#      apt: 
+#        upgrade: yes
+#        update_cache: yes
+#        cache_valid_time: 86400  
+##Updating the os is killing my ssh connections.
     - name: Install stuff via aptitude
       apt: 
         name: "{{ item }}"

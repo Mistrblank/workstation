@@ -1,0 +1,17 @@
+---
+##Install and configure CNTLM
+- name: install cntlm
+  apt: 
+    name: cntlm
+    update_cache: true
+
+- name: install cntlm.conf
+  template:
+    src: cntlm.conf.j2
+    dest: /etc/cntlm.conf
+    backup: yes 
+
+- name: start cntlm
+  service:
+    name: cntlm
+    state: restarted
