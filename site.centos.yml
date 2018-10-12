@@ -1,0 +1,40 @@
+---
+- hosts: localhost
+  connection: local
+
+  tasks:
+    - name: configure CNTLM
+      import_role: 
+        name: cntlm
+      vars:
+        cntlm_username: vincent.johnson
+        cntlm_domain: courts.judiciary.state.nj.us
+        cntlm_proxy: internetproxy.courts.judiciary.state.nj.us:8080
+        cntlm_passntlmv2: FD1308A5185CB1FF4BCA75173BFB2196
+#    - name: Update and Upgrade apt packages
+#      apt: 
+#        upgrade: yes
+#        update_cache: yes
+#        cache_valid_time: 86400  
+##Updating the os is killing my ssh connections.
+    - name: Install stuff via aptitude
+      package: 
+        name: "{{ item }}"
+        state: present
+      with_items: 
+        - git
+        - open-vm-tools
+        - open-vm-tools-desktop
+        - sshfs
+        - nmon
+        - xfce4
+        - cherrytree
+    - name: Add Visual Studio Code
+      include_role:
+        name: vscode  
+    - name: install the ibm-security-role
+      include_role:
+        name: ibmsecurity
+    - name: Build steganography tools
+      include_role:  
+        name: AudioStego

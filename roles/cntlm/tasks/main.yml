@@ -1,8 +1,9 @@
 ---
 ##Install and configure CNTLM
 - name: install cntlm
-  apt: 
+  package: 
     name: cntlm
+    statue: present
     update_cache: true
 
 - name: install cntlm.conf
