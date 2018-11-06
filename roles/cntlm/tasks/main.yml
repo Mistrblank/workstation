@@ -3,7 +3,7 @@
 - name: install cntlm
   package: 
     name: cntlm
-    statue: present
+    state: present
     update_cache: true
 
 - name: install cntlm.conf
